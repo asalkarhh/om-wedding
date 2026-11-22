@@ -1,0 +1,1545 @@
+/* ==========================================================================
+   वैभव आणि प्रणाली | शुभविवाह निमंत्रण
+   Modern Maharashtrian Wedding Invitation Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design Tokens & Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Rich Champagne & Pearl Ivory Palette (Warm, Luxurious, Cohesive) */
+  --color-ivory: #F8F4EC;
+  --color-ivory-warm: #F2EBE0;
+  --color-ivory-cream: #FAF6EF;
+  --color-ivory-card: #FDFBF8;
+  --color-ivory-glow: #FFFDF9;
+
+  /* Deep Royal Blue (Inspired by प्रणाली's Paithani saree) */
+  --color-blue-deep: #112046;
+  --color-blue-primary: #172D62;
+  --color-blue-mid: #223D7C;
+  --color-blue-light: #EDF3FC;
+  --color-blue-border: #D1DDF2;
+
+  /* Lustrous Antique Gold (Refined & Metallic Warmth) */
+  --color-gold: #C29848;
+  --color-gold-dark: #967226;
+  --color-gold-light: #E5D2A4;
+  --color-gold-soft: #F3E7C8;
+  --color-gold-tint: #FAF2DF;
+
+  /* Soft Turmeric Accent (for Haldi) */
+  --color-turmeric: #D47D08;
+  --color-turmeric-dark: #AC5E02;
+  --color-turmeric-bg: #FFF8E8;
+  --color-turmeric-border: #F1C66E;
+
+  /* Neutral Typography (Soft charcoal slate, never harsh black) */
+  --color-text: #28282E;
+  --color-text-muted: #5A5A66;
+  --color-text-light: #7E7E8E;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-serif: 'Noto Serif Devanagari', 'Mangal', Georgia, serif;
+  --font-sans: 'Noto Sans Devanagari', 'Mukta', system-ui, -apple-system, sans-serif;
+
+  /* Elevations (Warm Ambient Diffusion) */
+  --shadow-sm: 0 2px 8px rgba(18, 34, 74, 0.04), 0 1px 3px rgba(194, 152, 72, 0.08);
+  --shadow-md: 0 8px 24px -2px rgba(18, 34, 74, 0.06), 0 2px 8px rgba(194, 152, 72, 0.1);
+  --shadow-lg: 0 16px 36px -4px rgba(18, 34, 74, 0.08), 0 4px 12px rgba(194, 152, 72, 0.12);
+  --shadow-featured: 0 18px 44px -4px rgba(17, 32, 70, 0.26), 0 4px 16px rgba(194, 152, 72, 0.2);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-arch-desk: 240px 240px 18px 18px;
+  --radius-arch-mob: 180px 180px 14px 14px;
+
+  /* Spacing */
+  --container-max: 1140px;
+  --section-pad-y: 5.5rem;
+  --section-pad-y-mob: 2.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ivory);
+  color: var(--color-text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.9) 0%, rgba(248, 244, 236, 0.6) 45%, rgba(241, 233, 220, 0.75) 100%),
+    radial-gradient(ellipse at 85% 20%, rgba(194, 152, 72, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 15% 65%, rgba(23, 45, 98, 0.03) 0%, transparent 50%),
+    radial-gradient(rgba(194, 152, 72, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Accessible focus visible */
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Layout Containers & Utilities
+   -------------------------------------------------------------------------- */
+.wedding-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.section {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: var(--section-pad-y-mob);
+    padding-bottom: var(--section-pad-y-mob);
+  }
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem auto;
+}
+
+@media (max-width: 640px) {
+  .section-header {
+    margin: 0 auto 2rem auto;
+  }
+}
+
+.section-subtitle {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-dark);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: var(--color-blue-deep);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 1.85rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Decorative Ornaments & Dividers
+   -------------------------------------------------------------------------- */
+.divider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.75rem auto 1.25rem auto;
+  color: var(--color-gold);
+}
+
+.divider-line {
+  height: 1px;
+  width: 45px;
+  background: linear-gradient(to right, transparent, var(--color-gold));
+}
+
+.divider-line--right {
+  background: linear-gradient(to left, transparent, var(--color-gold));
+}
+
+.divider-motif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseGold 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGold {
+  0% { transform: scale(1); opacity: 0.85; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 50px;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.4, 1);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-blue-deep);
+  color: var(--color-white);
+  border: 1.5px solid var(--color-gold);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-blue-mid);
+  border-color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(17, 32, 68, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateY(3px);
+}
+
+.btn-venue {
+  background-color: var(--color-blue-deep);
+  color: var(--color-white);
+  border: 1.5px solid var(--color-gold);
+  min-height: 52px;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+}
+
+.btn-venue:hover {
+  background-color: var(--color-blue-mid);
+  border-color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(17, 32, 68, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Section 1: Hero
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, rgba(245, 236, 206, 0.4) 0%, transparent 70%);
+}
+
+.hero-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+}
+
+/* Desktop Split Layout */
+@media (min-width: 900px) {
+  .hero-section {
+    padding-top: 4.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4rem;
+  }
+}
+
+/* Hero Content */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .hero-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.hero-invocation {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-gold-dark);
+  margin-bottom: 1.1rem;
+}
+
+.hero-ganesh-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-gold);
+}
+
+.hero-invocation-text {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.hero-badge-wrap {
+  margin-bottom: 0.9rem;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.35rem 1.4rem;
+  background-color: var(--color-gold-tint);
+  border: 1px solid var(--color-gold-light);
+  border-radius: 9999px;
+  color: var(--color-gold-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.hero-couple-names {
+  font-family: var(--font-serif);
+  font-size: clamp(1.95rem, 6.8vw, 2.85rem);
+  font-weight: 800;
+  color: var(--color-blue-deep);
+  line-height: 1.28;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 2px rgba(17, 32, 68, 0.05);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .hero-couple-names {
+    font-size: 3.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-couple-names {
+    font-size: 3.8rem;
+  }
+}
+
+.hero-date-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.35rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gold-light);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  color: var(--color-blue-deep);
+}
+
+.hero-calendar-icon {
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+}
+
+.hero-date {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.hero-invitation-copy {
+  font-size: 1.12rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.hero-actions {
+  margin-bottom: 1.5rem;
+}
+
+.hero-divider--desktop {
+  margin: 1.5rem 0 0 0;
+  width: 100%;
+  max-width: 240px;
+}
+
+@media (max-width: 899px) {
+  .hero-divider--desktop {
+    display: none;
+  }
+}
+
+/* Hero Portrait Media with Arch Frame */
+.hero-media {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-portrait-card {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hero-portrait-card {
+    max-width: 320px;
+  }
+}
+
+/* Arch Frame: Inspired by Maharashtrian temple & wada arches */
+.hero-arch-outer {
+  width: 100%;
+  padding: 8px;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-arch-desk);
+  box-shadow: 
+    0 0 0 4px var(--color-ivory),
+    0 0 0 5.5px var(--color-gold-light),
+    var(--shadow-lg);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hero-arch-outer {
+    border-radius: var(--radius-arch-mob);
+    padding: 6px;
+  }
+}
+
+.hero-arch-inner {
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  overflow: hidden;
+  border-radius: calc(240px - 8px) calc(240px - 8px) 12px 12px;
+  background-color: var(--color-ivory-warm);
+}
+
+@media (max-width: 768px) {
+  .hero-arch-inner {
+    border-radius: calc(180px - 6px) calc(180px - 6px) 10px 10px;
+    aspect-ratio: 3 / 3.8;
+  }
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%; /* Keeps both faces comfortably centered */
+  display: block;
+}
+
+/* Visible Captions */
+.photo-caption {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-blue-deep);
+  line-height: 1.5;
+  text-align: center;
+  padding-top: 0.9rem;
+}
+
+.hero-caption {
+  margin-top: 0.25rem;
+  max-width: 90%;
+  border-bottom: 1px dashed var(--color-gold-light);
+  padding-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Programme
+   -------------------------------------------------------------------------- */
+.programme-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(242, 235, 224, 0.5) 15%, rgba(242, 235, 224, 0.5) 85%, transparent 100%);
+  position: relative;
+}
+
+.programme-main-date {
+  margin-top: 0.5rem;
+}
+
+.programme-date-badge {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-blue-deep);
+  background: var(--color-white);
+  padding: 0.45rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-gold);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 3 Cards Grid */
+.programme-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+@media (min-width: 860px) {
+  .programme-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Card Base */
+.programme-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--color-gold-light);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.programme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.programme-card-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.programme-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.programme-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+}
+
+.programme-card-time-wrap {
+  margin-bottom: 0.85rem;
+}
+
+.programme-card-time {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.25rem 0.85rem;
+  border-radius: 6px;
+}
+
+.programme-card-desc {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.programme-card-venue-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding-top: 0.75rem;
+  border-top: 1px dashed;
+  width: 100%;
+  justify-content: center;
+}
+
+.venue-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Card 1: Haldi - Soft Turmeric Accent */
+.programme-card--haldi {
+  background: var(--color-turmeric-bg);
+  border: 1.5px solid var(--color-turmeric-border);
+}
+
+.programme-card--haldi .programme-card-icon-wrap {
+  background: #FFE8B8;
+  color: var(--color-turmeric-dark);
+}
+
+.programme-card--haldi .programme-card-title {
+  color: var(--color-turmeric-dark);
+}
+
+.programme-card--haldi .programme-card-time {
+  color: var(--color-turmeric-dark);
+  background: rgba(214, 127, 10, 0.1);
+}
+
+.programme-card--haldi .programme-card-desc {
+  color: #7D4904;
+}
+
+.programme-card--haldi .programme-card-venue-tag {
+  border-color: rgba(214, 127, 10, 0.25);
+  color: var(--color-turmeric-dark);
+}
+
+.programme-card--haldi .venue-dot {
+  background-color: var(--color-turmeric);
+}
+
+/* Card 2: Wedding - Strongest Visual Emphasis (Royal Blue & Gold) */
+.programme-card--featured {
+  background: linear-gradient(155deg, var(--color-blue-deep) 0%, #172D60 100%);
+  color: var(--color-white);
+  border: 2px solid var(--color-gold);
+  box-shadow: var(--shadow-featured);
+  position: relative;
+  overflow: visible;
+}
+
+@media (min-width: 860px) {
+  .programme-card--featured {
+    transform: scale(1.04);
+    z-index: 2;
+  }
+  .programme-card--featured:hover {
+    transform: scale(1.06) translateY(-4px);
+    box-shadow: 0 24px 50px rgba(17, 32, 68, 0.3);
+  }
+}
+
+.featured-ribbon {
+  position: absolute;
+  top: -14px;
+  background: linear-gradient(to right, var(--color-gold), var(--color-gold-dark));
+  color: var(--color-white);
+  padding: 0.3rem 1.4rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--color-gold-light);
+}
+
+.programme-card--featured .programme-card-icon-wrap {
+  background: rgba(192, 152, 72, 0.2);
+  color: var(--color-gold-light);
+  border: 1px solid var(--color-gold);
+}
+
+.programme-card--featured .programme-card-title {
+  color: #FFFFFF;
+  font-size: 1.7rem;
+}
+
+.programme-card--featured .programme-card-time {
+  color: var(--color-gold-light);
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: 1px solid rgba(192, 152, 72, 0.4);
+}
+
+.programme-card--featured .programme-card-desc {
+  color: #E2E8F6;
+}
+
+.programme-card--featured .programme-card-venue-tag {
+  border-color: rgba(192, 152, 72, 0.4);
+  color: var(--color-gold-light);
+}
+
+.programme-card--featured .venue-dot {
+  background-color: var(--color-gold-light);
+}
+
+/* Card 3: Snehabhojan - Standard / Traditional Ivory Card */
+.programme-card--feast {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-gold-light);
+}
+
+.programme-card--feast .programme-card-icon-wrap {
+  background: var(--color-gold-tint);
+  color: var(--color-gold-dark);
+}
+
+.programme-card--feast .programme-card-title {
+  color: var(--color-blue-deep);
+}
+
+.programme-card--feast .programme-card-time {
+  color: var(--color-blue-deep);
+  background: var(--color-gold-tint);
+}
+
+.programme-card--feast .programme-card-desc {
+  color: var(--color-text-muted);
+}
+
+.programme-card--feast .programme-card-venue-tag {
+  border-color: var(--color-gold-light);
+  color: var(--color-gold-dark);
+}
+
+.programme-card--feast .venue-dot {
+  background-color: var(--color-gold);
+}
+
+/* Notice under programme */
+.programme-footer-notice {
+  text-align: center;
+  margin-top: 2.75rem;
+}
+
+.programme-notice-text {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Venue
+   -------------------------------------------------------------------------- */
+.venue-section {
+  background-color: var(--color-ivory);
+}
+
+.venue-card-wrapper {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.venue-card {
+  background: linear-gradient(150deg, #FFFFFF 0%, #FDFBF8 40%, #F6EFE2 100%);
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 
+    0 0 0 5px var(--color-ivory),
+    0 0 0 6.5px var(--color-gold-light),
+    var(--shadow-md);
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .venue-card {
+    padding: 2.25rem 1.25rem;
+  }
+}
+
+.venue-pin-badge {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 50%;
+  background: var(--color-gold-tint);
+  border: 1.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-blue-deep);
+}
+
+.venue-pin-svg {
+  width: 32px;
+  height: 32px;
+}
+
+.venue-name {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-blue-deep);
+  margin-bottom: 0.85rem;
+  line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+  .venue-name {
+    font-size: 1.7rem;
+  }
+}
+
+.venue-address {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.venue-action {
+  margin-bottom: 1rem;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.external-icon {
+  margin-left: 0.2rem;
+  opacity: 0.85;
+}
+
+.venue-note {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  margin-top: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 4: Gallery
+   -------------------------------------------------------------------------- */
+.gallery-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(242, 235, 224, 0.45) 15%, rgba(242, 235, 224, 0.45) 85%, transparent 100%);
+  position: relative;
+}
+
+/* Gallery Grid Layout */
+.gallery-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+@media (max-width: 679px) {
+  .gallery-layout {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+
+  .gallery-item {
+    padding: 0.5rem;
+  }
+
+  .gallery-item:nth-child(5) {
+    grid-column: span 2; /* Deepmala photo spans full width on mobile! */
+  }
+
+  .gallery-item:nth-child(5) .gallery-image-frame {
+    aspect-ratio: 3 / 4.4;
+  }
+
+  .gallery-caption {
+    font-size: 0.88rem;
+    padding: 0.65rem 0.25rem 0.25rem 0.25rem;
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 680px) {
+  .gallery-layout {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .gallery-layout {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2.25rem;
+  }
+
+  /* Editorial placement for 5 photos preserving Deepmala grandeur */
+  .gallery-item:nth-child(1) {
+    grid-column: span 6;
+  }
+  .gallery-item:nth-child(2) {
+    grid-column: span 6;
+  }
+  .gallery-item:nth-child(3) {
+    grid-column: span 4;
+  }
+  .gallery-item:nth-child(4) {
+    grid-column: span 4;
+  }
+  /* Deepmala photo: Given prominent presence and height */
+  .gallery-item:nth-child(5) {
+    grid-column: span 4;
+  }
+}
+
+/* Gallery Item Card */
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  border: 1px solid var(--color-gold-light);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: calc(var(--radius-md) - 4px);
+  overflow: hidden;
+  background-color: var(--color-ivory-warm);
+}
+
+/* Deepmala Photo Special Height */
+.gallery-item--deepmala .gallery-image-frame {
+  aspect-ratio: 2 / 3.1; /* Tall ratio to preserve full stone deepmala composition */
+}
+
+@media (max-width: 679px) {
+  .gallery-item--deepmala .gallery-image-frame {
+    aspect-ratio: 2 / 3.1;
+  }
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* Preserves couple's faces */
+  transition: transform 0.4s ease;
+}
+
+/* Center-lower positioning for the towering Deepmala photo */
+.gallery-img--deepmala {
+  object-position: center 48%;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.02);
+}
+
+.gallery-gold-border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(192, 152, 72, 0.4);
+  border-radius: calc(var(--radius-md) - 4px);
+  pointer-events: none;
+}
+
+.gallery-caption {
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
+  font-size: 1.05rem;
+  color: var(--color-blue-deep);
+}
+
+/* --------------------------------------------------------------------------
+   Section 5: Closing
+   -------------------------------------------------------------------------- */
+.closing-section {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+  background: radial-gradient(circle at 50% 50%, rgba(245, 236, 206, 0.4) 0%, transparent 80%);
+}
+
+@media (max-width: 768px) {
+  .closing-section {
+    padding-bottom: 6.5rem; /* Extra clearance for mobile floating quick bar */
+  }
+}
+
+.closing-card {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(150deg, #FFFFFF 0%, #FDFBF8 40%, #F6EFE2 100%);
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    0 0 0 4px var(--color-ivory),
+    0 0 0 5.5px var(--color-gold-light),
+    var(--shadow-md);
+}
+
+@media (max-width: 640px) {
+  .closing-card {
+    padding: 2.25rem 1.25rem;
+  }
+}
+
+.closing-ornament-top {
+  margin-bottom: 1.5rem;
+}
+
+.closing-ganesh-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--color-gold);
+}
+
+.closing-blessing {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-blue-deep);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .closing-blessing {
+    font-size: 1.15rem;
+  }
+}
+
+.closing-divider {
+  margin: 1.25rem auto;
+}
+
+.closing-signature {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-gold-dark);
+  margin-bottom: 1.5rem;
+}
+
+.closing-subtle-pattern {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--color-gold-light);
+  font-size: 0.9rem;
+}
+
+.closing-subtle-pattern .dot {
+  font-size: 1.2rem;
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   Ambient Petals Canvas
+   -------------------------------------------------------------------------- */
+.petals-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.wedding-app {
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Countdown Section
+   -------------------------------------------------------------------------- */
+.countdown-section {
+  padding-top: 1rem;
+  padding-bottom: 3.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.countdown-card {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FDFBF7 100%);
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.75rem;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 
+    0 0 0 4px var(--color-ivory),
+    0 0 0 5.5px var(--color-gold-light),
+    var(--shadow-md);
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .countdown-card {
+    padding: 1.5rem 0.65rem;
+  }
+}
+
+.countdown-header {
+  margin-bottom: 1.25rem;
+}
+
+.countdown-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-dark);
+  text-transform: uppercase;
+  background: var(--color-gold-tint);
+  padding: 0.3rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-gold-light);
+  margin-bottom: 0.6rem;
+}
+
+.countdown-badge-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-gold);
+}
+
+.countdown-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-blue-deep);
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .countdown-title {
+    font-size: 1.45rem;
+  }
+}
+
+.countdown-divider {
+  margin: 0.5rem auto 1rem auto;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto 1.5rem auto;
+}
+
+@media (max-width: 520px) {
+  .countdown-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+}
+
+.countdown-box {
+  background: var(--color-ivory);
+  border: 1.5px solid var(--color-gold-light);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 520px) {
+  .countdown-box {
+    padding: 0.6rem 0.15rem;
+    border-radius: var(--radius-sm);
+  }
+}
+
+.countdown-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-gold);
+  box-shadow: 0 6px 16px rgba(192, 152, 72, 0.15);
+}
+
+.countdown-box--seconds {
+  border-color: var(--color-gold);
+  background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-gold-tint) 100%);
+  position: relative;
+}
+
+.countdown-number-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  width: 100%;
+}
+
+.countdown-digit--en {
+  font-family: var(--font-serif);
+  font-size: 2.15rem;
+  font-weight: 800;
+  color: var(--color-blue-deep);
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 520px) {
+  .countdown-digit--en {
+    font-size: 1.35rem;
+  }
+}
+
+.countdown-digit-mr {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 520px) {
+  .countdown-digit-mr {
+    font-size: 0.72rem;
+    margin-top: 0.1rem;
+  }
+}
+
+.countdown-unit-label {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 0.45rem;
+}
+
+@media (max-width: 520px) {
+  .countdown-unit-label {
+    font-size: 0.78rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.countdown-target-note {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-gold-dark);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+@media (max-width: 520px) {
+  .countdown-target-note {
+    font-size: 0.85rem;
+    padding: 0 0.5rem;
+  }
+}
+
+.countdown-completed {
+  padding: 1.5rem;
+  background: var(--color-gold-tint);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.countdown-completed-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.countdown-completed-msg {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-blue-deep);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll Reveal & Micro-Interactions
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+/* Stagger delays for grid items */
+.programme-cards-grid .reveal-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+.programme-cards-grid .reveal-on-scroll:nth-child(2) { transition-delay: 0.15s; }
+.programme-cards-grid .reveal-on-scroll:nth-child(3) { transition-delay: 0.25s; }
+
+.gallery-layout .reveal-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+.gallery-layout .reveal-on-scroll:nth-child(2) { transition-delay: 0.12s; }
+.gallery-layout .reveal-on-scroll:nth-child(3) { transition-delay: 0.18s; }
+.gallery-layout .reveal-on-scroll:nth-child(4) { transition-delay: 0.24s; }
+.gallery-layout .reveal-on-scroll:nth-child(5) { transition-delay: 0.3s; }
+
+/* Soft golden aura on the Arch Frame */
+@keyframes archAura {
+  0% {
+    box-shadow: 
+      0 0 0 4px var(--color-ivory),
+      0 0 0 5.5px var(--color-gold-light),
+      0 14px 34px rgba(17, 32, 68, 0.1);
+  }
+  100% {
+    box-shadow: 
+      0 0 0 4px var(--color-ivory),
+      0 0 0 6.5px var(--color-gold),
+      0 20px 45px rgba(192, 152, 72, 0.18);
+  }
+}
+
+.hero-arch-outer {
+  animation: archAura 5s ease-in-out infinite alternate;
+}
+
+/* Shimmer sweep on buttons */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: rotate(30deg) translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  transform: rotate(30deg) translateX(120%);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Floating Quick Actions Bar
+   -------------------------------------------------------------------------- */
+.mobile-quickbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-quickbar {
+    display: block;
+    position: fixed;
+    bottom: max(1.1rem, env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    z-index: 99;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    opacity: 0;
+    pointer-events: none;
+    width: auto;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .mobile-quickbar.is-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-quickbar-inner {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(253, 250, 244, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid var(--color-gold);
+    border-radius: 9999px;
+    padding: 0.35rem 0.5rem;
+    box-shadow: 
+      0 10px 30px rgba(17, 32, 70, 0.16),
+      0 2px 8px rgba(194, 152, 72, 0.2);
+  }
+
+  .quickbar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 1.05rem;
+    border-radius: 9999px;
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-blue-deep);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .quickbar-btn:active {
+    transform: scale(0.96);
+  }
+
+  .quickbar-btn--programme {
+    color: var(--color-blue-deep);
+  }
+
+  .quickbar-btn--map {
+    background-color: var(--color-blue-deep);
+    color: var(--color-white);
+    border: 1px solid var(--color-gold);
+  }
+
+  .quickbar-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .quickbar-sep {
+    width: 1px;
+    height: 18px;
+    background-color: var(--color-gold-light);
+    margin: 0 0.15rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Preferences
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .petals-canvas {
+    display: none !important;
+  }
+}
