@@ -8,6 +8,7 @@ import Gallery from './components/Gallery';
 import Closing from './components/Closing';
 import PetalsCanvas from './components/PetalsCanvas';
 import MobileQuickBar from './components/MobileQuickBar';
+import AudioPlayer from './components/AudioPlayer';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <div className="wedding-app">
       <PetalsCanvas />
+      <AudioPlayer data={weddingData} />
       <main id="main-content">
         <Hero data={weddingData} />
         <Countdown data={weddingData} />

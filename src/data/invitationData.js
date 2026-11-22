@@ -138,6 +138,14 @@ export const weddingData = {
     signature: 'सस्नेह, वैभव आणि प्रणाली',
   },
 
+  music: {
+    src: '/audio/man-dhaga-dhaga.mp3',
+    title: 'मन धागा धागा जोडते नवा',
+    playLabel: 'संगीत सुरू करा',
+    pauseLabel: 'संगीत थांबवा',
+    promptText: 'संगीत ऐका 🎵',
+  },
+
   meta: {
     siteTitle: 'वैभव आणि प्रणाली | शुभविवाह निमंत्रण',
     productionUrl: import.meta.env.VITE_SITE_URL || '',
